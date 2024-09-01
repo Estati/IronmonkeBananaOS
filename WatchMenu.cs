@@ -15,13 +15,13 @@ namespace IronMonkeBananaOS
         public override void OnPostModSetup()
         {
             selectionHandler.maxIndex = 2;
-            Force = 7;
+            force = 7;
 
         }
         public override string Title => "<color=red>Iron</color><color=yellow>Monke</color>";
         public override bool DisplayOnMainMenu => true;
         public bool IsEnabled;
-        public float Force;
+        
         
         public override string OnGetScreenContent()
         {
@@ -35,7 +35,7 @@ namespace IronMonkeBananaOS
             BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(0, "[Enabled : " + IsEnabled + "]"));
             BuildMenuOptions.AppendLine("");
             BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(1, "[Force : " + force + "]"));
-            BuildMenuOptions.AppendLine("[Both hands force : " + force * 2 + "]"));
+            BuildMenuOptions.AppendLine("[Both hands force : " + force * 2 + "]");
 
             return BuildMenuOptions.ToString();
         }
@@ -99,11 +99,11 @@ namespace IronMonkeBananaOS
             {
                 if (ControllerInputPoller.instance.rightGrab)
                 {
-                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.rightControllerTransform.transform.right * 7f * Time.deltaTime;
+                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.rightControllerTransform.transform.right * force * Time.deltaTime;
                 }
                 if (ControllerInputPoller.instance.leftGrab)
                 {
-                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.leftControllerTransform.transform.right * -7f * Time.deltaTime;
+                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.leftControllerTransform.transform.right * -force * Time.deltaTime;
                 }
             }
         }
