@@ -12,9 +12,16 @@ namespace IronMonkeBananaOS
 {
     internal class WatchMenu:WatchPage
     {
+        public override void OnPostModSetup()
+        {
+            selectionHandler.maxIndex = 2;
+            Force = 7;
+
+        }
         public override string Title => "<color=red>Iron</color><color=yellow>Monke</color>";
         public override bool DisplayOnMainMenu => true;
         public bool IsEnabled;
+        public float Force;
         
         public override string OnGetScreenContent()
         {
@@ -26,10 +33,14 @@ namespace IronMonkeBananaOS
             BuildMenuOptions.AppendLine("<color=yellow>========================</color>");
             BuildMenuOptions.AppendLine("");
             BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(0, "[Enabled : " + IsEnabled + "]"));
-            
+            BuildMenuOptions.AppendLine("");
+            BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(1, "[Force : " + force + "]"));
+            BuildMenuOptions.AppendLine("[Both hands force : " + force * 2 + "]"));
+
             return BuildMenuOptions.ToString();
         }
-
+        public float force;
+        
         public override void OnButtonPressed(WatchButtonType buttonType)
         {
             switch (buttonType)
@@ -46,6 +57,33 @@ namespace IronMonkeBananaOS
                     if (selectionHandler.currentIndex == 0)
                     {
                         IsEnabled = !IsEnabled;
+                    }
+                    break;
+                case WatchButtonType.Right:
+                    if (selectionHandler.currentIndex == 1)
+                    {
+                        if (force > 57)
+                        {
+                            force -= 1f;
+                        }
+                        else
+                        {
+                            force += 1f;
+                        }
+                    }
+
+                    break;
+                case WatchButtonType.Left:
+                    if (selectionHandler.currentIndex == 1)
+                    {
+                        if (force < 7)
+                        {
+                            force += 1f;
+                        }
+                        else
+                        {
+                            force -= 1f;
+                        }
                     }
                     break;
 
