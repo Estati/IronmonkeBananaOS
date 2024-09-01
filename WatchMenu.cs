@@ -35,7 +35,7 @@ namespace IronMonkeBananaOS
             BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(0, "[Enabled : " + IsEnabled + "]"));
             BuildMenuOptions.AppendLine("");
             BuildMenuOptions.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(1, "[Force : " + force + "]"));
-            BuildMenuOptions.AppendLine("[Both hands force : " + force * 2 + "]");
+            BuildMenuOptions.AppendLine("   [Both hands force : " + force * 2 + "]");
 
             return BuildMenuOptions.ToString();
         }
