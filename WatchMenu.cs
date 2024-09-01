@@ -14,7 +14,7 @@ namespace IronMonkeBananaOS
     {
         public override void OnPostModSetup()
         {
-            selectionHandler.maxIndex = 2;
+            selectionHandler.maxIndex = 1;
             force = 7;
 
         }
