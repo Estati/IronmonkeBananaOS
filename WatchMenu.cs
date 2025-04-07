@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.XR;
-using Utilla;
+
 
 namespace IronMonkeBananaOS
 {
@@ -99,11 +99,11 @@ namespace IronMonkeBananaOS
             {
                 if (ControllerInputPoller.instance.rightGrab)
                 {
-                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.rightControllerTransform.transform.right * force * Time.deltaTime;
+                    GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.transform.right * force * Time.deltaTime;
                 }
                 if (ControllerInputPoller.instance.leftGrab)
                 {
-                    GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.Player.Instance.leftControllerTransform.transform.right * -force * Time.deltaTime;
+                    GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.velocity += GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.transform.right * -force * Time.deltaTime;
                 }
             }
         }
